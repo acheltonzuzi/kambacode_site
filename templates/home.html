@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}NEMOE KAMBA CODE — Aprenda Programação{% endblock %}
+
+{% block content %}
+<main class="min-h-screen bg-gray-50 text-gray-800 font-sans scroll-smooth">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-30 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold text-orange-600 tracking-tight">
+                NEMOE<span class="text-gray-900"> KAMBA CODE</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-orange-600 transition">Sobre</a>
+                <a href="#courses" class="hover:text-orange-600 transition">Aulas</a>
+                <a href="#community" class="hover:text-orange-600 transition">Comunidade</a>
+                <a href="#contact" class="hover:text-orange-600 transition">Contato</a>
+            </div>
+            <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
+                class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition hidden md:inline-block">
+                YouTube →
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header
+        class="pt-32 pb-24 bg-gradient-to-br from-orange-600 via-orange-700 to-indigo-800 text-center text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                Aprenda Programação <br class="hidden md:block" /> de Forma Simples e Prática
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-orange-100 max-w-2xl mx-auto">
+                Tutoriais, dicas e projetos reais — do básico ao avançado.
+                Tudo com o estilo direto e descomplicado do <span class="font-semibold">NEMOE KAMBA CODE</span>.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
+                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg transition">
+                    Inscreva-se no Canal
+                </a>
+                <a href="#courses"
+                    class="border border-white/60 text-white hover:bg-white hover:text-orange-700 px-6 py-3 rounded-full transition">
+                    Ver Aulas
+                </a>
+            </div>
+        </div>
+
+        <!-- Background element -->
+        <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')] bg-cover bg-center opacity-10">
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 md:flex items-center gap-16">
+            <img src="https://cdn.dribbble.com/userupload/6860645/file/original-61f93e17c6a6bdf8142a8e1ff11dff74.png?resize=800x600&vertical=center"
+                alt="Coding" class="rounded-2xl shadow-xl md:w-1/2 mb-10 md:mb-0">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Transforme seu futuro com programação</h2>
+                <p class="text-gray-600 mb-6">
+                    No <strong>NEMOE KAMBA CODE</strong>, acreditamos que qualquer pessoa pode aprender a programar —
+                    independentemente do ponto de partida.
+                    Criamos conteúdos práticos e diretos para ajudar você a desenvolver projetos reais e se destacar no
+                    mercado tech.
+                </p>
+                <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
+                    class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full transition">
+                    Acessar o Canal
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-24 bg-gray-100 text-left">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 text-gray-900">Aulas e Séries Populares</h2>
+            <div class="grid md:grid-cols-3 gap-5">
+                {% for course in courses %}
+                <a  href="{% url 'course_detail' course.id %}">
+
+                    <div
+                        class="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+
+                        <!-- Thumbnail -->
+                        <div class="relative w-full h-56 overflow-hidden">
+                            <img src="{{ course.thumbnail_url }}" alt="{{ course.title }}"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                            <!-- Overlay gradiente -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition">
+                            </div>
+                            <!-- Título sobre a imagem (visível no hover) -->
+                            <h3
+                                class="absolute bottom-3 left-4 right-4 text-lg font-semibold text-white opacity-0 group-hover:opacity-100 transition">
+                                {{ course.title }}
+                            </h3>
+                        </div>
+
+                        <!-- Corpo -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-500 transition">
+                                {{ course.title }}
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                {{ course.description }}
+                            </p>
+
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-200">
+                                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-6">
+                                        <path fill-rule="evenodd"
+                                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+
+                                    <span>{{ course.instructor.username }}</span>
+
+                                </div>
+
+                                <span class="font-semibold text-orange-500 text-lg">
+                                    {{ course.price|default:"Grátis" }} kz
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-24 bg-gradient-to-br from-orange-700 to-indigo-800 text-white text-center">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-6">Junte-se à Comunidade</h2>
+            <p class="text-orange-100 mb-10">
+                Mais de <strong>10.000 desenvolvedores</strong> já estão aprendendo, compartilhando conhecimento
+                e evoluindo juntos com o <strong>NEMOE KAMBA CODE</strong>.
+            </p>
+            <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
+                class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-md transition">
+                Inscreva-se no Canal →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h3 class="text-2xl font-semibold text-white mb-4">NEMOE KAMBA CODE</h3>
+            <p class="text-gray-400 mb-6">
+                Aulas de programação para todos os níveis — simples, diretas e com propósito.
+            </p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
+                    class="hover:text-red-500 transition">YouTube</a>
+                <a href="#" class="hover:text-orange-400 transition">Discord</a>
+                <a href="#" class="hover:text-orange-500 transition">LinkedIn</a>
+                <a href="#" class="hover:text-gray-400 transition">GitHub</a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2025 NEMOE KAMBA CODE — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</main>
+{% endblock %}
