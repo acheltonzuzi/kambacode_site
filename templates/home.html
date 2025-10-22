@@ -6,23 +6,7 @@
 <main class="min-h-screen bg-gray-50 text-gray-800 font-sans scroll-smooth">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-30 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-2xl font-extrabold text-orange-600 tracking-tight">
-                NEMOE<span class="text-gray-900"> KAMBA CODE</span>
-            </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-orange-600 transition">Sobre</a>
-                <a href="#courses" class="hover:text-orange-600 transition">Aulas</a>
-                <a href="#community" class="hover:text-orange-600 transition">Comunidade</a>
-                <a href="#contact" class="hover:text-orange-600 transition">Contato</a>
-            </div>
-            <a href="https://www.youtube.com/@nemoekambacode" target="_blank"
-                class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition hidden md:inline-block">
-                YouTube →
-            </a>
-        </div>
-    </nav>
+    {% include "components/navbar.html" %}
 
     <!-- Hero -->
     <header
@@ -83,12 +67,12 @@
                 <a  href="{% url 'course_detail' course.id %}">
 
                     <div
-                        class="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+                        class="group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
 
                         <!-- Thumbnail -->
                         <div class="relative w-full h-56 overflow-hidden">
                             <img src="{{ course.thumbnail_url }}" alt="{{ course.title }}"
-                                class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition duration-500">
                             <!-- Overlay gradiente -->
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition">
@@ -101,7 +85,7 @@
                         </div>
 
                         <!-- Corpo -->
-                        <div class="p-6">
+                        <div class="mt-3">
                             <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-500 transition">
                                 {{ course.title }}
                             </h3>

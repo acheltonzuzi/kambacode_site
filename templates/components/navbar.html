@@ -1,0 +1,21 @@
+ <nav class="fixed w-full z-30 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold text-orange-600 tracking-tight">
+                <span class="text-gray-900"> KAMBA CODE</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-orange-600 transition">Sobre</a>
+                <a href="#courses" class="hover:text-orange-600 transition">Aulas</a>
+                <a href="#community" class="hover:text-orange-600 transition">Comunidade</a>
+                <a href="#contact" class="hover:text-orange-600 transition">Contato</a>
+            </div>
+            {% if not user.is_authenticated %}
+             <div class="hidden md:flex space-x-8 items-center">
+                <a href="/accounts/login/" class="hover:text-orange-600 transition">Login</a>
+                <a href="/accounts/signup" class="hover:text-orange-600 transition">criar conta</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    

@@ -32,7 +32,7 @@
                     <button
                         class="w-full text-left flex justify-between items-center px-5 py-2 text-sm hover:bg-orange-100 transition duration-200"
                         onclick="loadLesson('{{ lesson.video_url|escapejs }}', '{{ lesson.title|escapejs }}')">
-                        <span class="truncate text-gray-700">{{ lesson.title }}</span>
+                        <span class="truncate text-gray-700">{{lesson.id}} - {{ lesson.title }}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-orange-400">
                             <path fill-rule="evenodd"
                                 d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
@@ -79,34 +79,7 @@
     </section>
 </main>
 
-<!-- Script -->
-<!-- <script>
-    function loadLesson(url, title) {
-        const frame = document.getElementById('videoFrame');
-        const titleElement = document.getElementById('lessonTitle');
-        const placeholder = document.getElementById('placeholder');
 
-        if (url.includes("youtube.com") || url.includes("youtu.be")) {
-            const embedUrl = url
-                .replace("watch?v=", "embed/")
-                .replace("youtu.be/", "youtube.com/embed/");
-            frame.src = embedUrl;
-        } else {
-            frame.src = url;
-        }
-
-        titleElement.textContent = title;
-        placeholder.style.display = 'none';
-    }
-
-    // 🔸 Carrega automaticamente a primeira aula
-    document.addEventListener("DOMContentLoaded", function () {
-        const firstLesson = document.querySelector("button[onclick^='loadLesson']");
-        if (firstLesson) {
-            firstLesson.click();
-        }
-    });
-</script> -->
 <script>
     function loadLesson(url, title, button = null) {
         const frame = document.getElementById('videoFrame');
@@ -163,4 +136,4 @@
     });
 </script>
 
-{% endblock %}
+{% endblock %}<!--  -->
